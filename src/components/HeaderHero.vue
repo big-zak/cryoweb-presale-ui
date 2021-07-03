@@ -81,16 +81,16 @@
                         </div>
                         <!-- end of countdown -->
                         <div class="ico-progress-bar rounded--full d-flex align-items-center mb-2">
-                            <div class="ico-progress-bar__inner rounded--full bg-color--primary jsElement" data-progress-horizon="60"></div>
+                            <div class="ico-progress-bar__inner rounded--full bg-color--primary jsElement" :data-progress-horizon="percentageSold"></div>
                         </div>
                         <div class="d-flex justify-content-between">
                             <div class="ico-progress__text">
                                 <span class="body-font color--primary opacity--70 font-w--500">Sold</span>
-                                <p class="text-color--300 h6-font font-w--700">{{totalTokensSold}} {{appConfig_.tokenSymbol}}</p>
+                                <p class="text-color--300 h6-font font-w--700">{{totalTokensSold}} {{tokenSymbol}}</p>
                             </div>
                             <div class="ico-progress__text text-right">
                                 <span class="body-font color--primary opacity--70 font-w--500">Remaining</span>
-                                <p class="text-color--300 h6-font font-w--700">{{remainingTokens}} {{appConfig_.tokenSymbol}}</p>
+                                <p class="text-color--300 h6-font font-w--700">{{remainingTokens}} {{tokenSymbol}}</p>
 
                             </div>
                         </div>
@@ -119,7 +119,8 @@ export default {
             totalTokensSold: 0,
             remainingTokens: 0,
             percentageSold: 0,
-            presaleEndDate: appConfig_.presaleEndDate
+            presaleEndDate: appConfig_.presaleEndDate,
+            tokenSymbol: appConfig_.tokenSymbol
         }
     },
 

@@ -361,7 +361,7 @@ export default {
 
                 console.log(this.getVisitorsReferrer())
 
-                 let result = await this.contractInstance.buyToken( this.getVisitorsReferrer(), { value: amountToBuyInBNBWei })
+                 let result = await this.contractInstance.buyPreSale( this.getVisitorsReferrer(), { value: amountToBuyInBNBWei })
 
                 Swal.close();
 
