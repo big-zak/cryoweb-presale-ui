@@ -86,11 +86,11 @@
                         <div class="d-flex justify-content-between">
                             <div class="ico-progress__text">
                                 <span class="body-font color--primary opacity--70 font-w--500">Sold</span>
-                                <p class="text-color--300 h6-font font-w--700">{{totalTokensSold}}</p>
+                                <p class="text-color--300 h6-font font-w--700">{{totalTokensSold}} {{appConfig_.tokenSymbol}}</p>
                             </div>
                             <div class="ico-progress__text text-right">
                                 <span class="body-font color--primary opacity--70 font-w--500">Remaining</span>
-                                <p class="text-color--300 h6-font font-w--700">{{remainingTokens}}</p>
+                                <p class="text-color--300 h6-font font-w--700">{{remainingTokens}} {{appConfig_.tokenSymbol}}</p>
 
                             </div>
                         </div>
@@ -108,16 +108,68 @@
 <script> 
 
 import appConfig_ from '../config/app'
+import contractAbi from "../data/contractAbi.json";
 
-console.log(appConfig_)
+
+import { utils as ethersUtils, Contract, providers as ethersProviders, BigNumber } from "ethers";
 
 export default {
     data(){
         return {
-            totalTokensSold: 200000,
-            remainingTokens: 100000,
-            percentageSold: 50,
+            totalTokensSold: 0,
+            remainingTokens: 0,
+            percentageSold: 0,
             presaleEndDate: appConfig_.presaleEndDate
+        }
+    },
+
+    beforeMount(){
+        this.computeProgressBarInfo();
+    },
+
+    methods: {
+
+        async computeProgressBarInfo(){
+            
+            try{
+                let provider = new ethersProviders.JsonRpcProvider(appConfig_.publicRPC);
+
+                let contractInstance = new Contract( appConfig_.contractAddress , contractAbi , provider );
+
+                //lets get stats 
+                let assetsData = await contractInstance.getStats();
+
+                let amountReleased =  assetsData[0];
+                let amountRemaining =  assetsData[1];
+
+                let totalPresaleAMount = amountReleased.add(amountRemaining);
+                
+                if(totalPresaleAMount.eq(BigNumber.from(0))){
+                    return false;
+                }
+
+            
+                
+                let percentageReleasedBN = (amountReleased.mul(BigNumber.from(100))).div(totalPresaleAMount)
+
+                this.percentageSold = this.toHumanReadable(percentageReleasedBN).toNumber();
+
+                this.totalTokensSold = this.toHumanReadable(amountReleased).toString();
+
+                this.remainingTokens = this.toHumanReadable(amountRemaining).toString();
+                
+            } catch (e){
+                console.log("HeaderHero::computeProgressBarInfo", e, e.stack);
+            }
+            
+        },
+
+        toHumanReadable(amount) {
+            let tokenDecimal = appConfig_.tokenDecimal;
+
+            let divisor = BigNumber.from(10).pow(BigNumber.from(tokenDecimal.toString()));
+
+            return BigNumber.from(amount).div(divisor);
         }
     }
 }
