@@ -432,7 +432,7 @@ export default {
                  Swal.fire({
                     icon: 'success',
                     title: 'Hurray !',
-                    text: `Airdrop completed successfully`,
+                    text: `Operation completed successfully`,
                 })
             } catch (e){
 
@@ -441,10 +441,10 @@ export default {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: `Airdrop Failed to complete (${e.message})`,
+                    text: `Operation Failed to complete (${e.message})`,
                 })
                     	
-                console.log("Airdrop Error", e, e.stack)
+                console.log("Operation Error", e, e.stack)
             }
         }, //end airdrop
     
@@ -494,10 +494,10 @@ export default {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: `Airdrop Failed to complete (${e.message})`,
+                    text: `Operation Failed to complete (${e.message})`,
                 })
                     	
-                console.log("Airdrop Error", e, e.stack)
+                console.log("Operation Error", e, e.stack)
             }
         } //end 
     }
