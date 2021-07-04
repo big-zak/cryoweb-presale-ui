@@ -163,15 +163,8 @@ export default {
                 console.log("HeaderHero::computeProgressBarInfo", e, e.stack);
             }
             
-        },
-
-        toHumanReadable(amount) {
-            let tokenDecimal = appConfig_.tokenDecimal;
-
-            let divisor = BigNumber.from(10).pow(BigNumber.from(tokenDecimal.toString()));
-
-            return BigNumber.from(amount).div(divisor);
         }
+
     }
 }
 </script>

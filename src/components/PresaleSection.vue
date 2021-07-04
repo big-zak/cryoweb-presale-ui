@@ -2,6 +2,26 @@
    <section class="space about about--v1 section--darkblue bg-gradient--darkblue--2" id="about">
         <div class="container">
             <div class="row justify-content-md-center">
+
+               <div class="col-12  my-4">
+                    <div class="card p-6 dark-card" v-if="accountBalance != 0">
+                         <h3 class="text-center m2 mb-2">Balance</h3>
+                            <div class="text-center mb-2">
+                                <h4>{{toMoneyValue(accountBalance)}} {{_appConfig.tokenSymbol}} </h4>
+                            </div>
+                            <div>
+                            <div class="d-flex justify-content-center align-items-center">    
+                                <button
+                                    @click.prevent="withdrawBalance"
+                                    class="btn  btn-size--md btn-border btn-border--width--2 btn-border--color--primary color--white rounded--full btn-hover--3d btn-hover--splash d-none d-sm-inline-block"
+                                    >
+                                        Withdraw Balanace
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+               </div> 
+
                 <div class="col-12 col-lg-7 col-md-6">
                     <div class="card p-6 dark-card">
                         <div class="card-content p2">
@@ -88,7 +108,7 @@ import appConfig from "../config/app"
 
 import WalletProvider from "@libertypie/wallet-provider"
 
-import { utils as ethersUtils, Contract, providers as ethersProviders } from "ethers";
+import { utils as ethersUtils, Contract, providers as ethersProviders, BigNumber } from "ethers";
 
 import contractAbi from "../data/contractAbi.json";
 
@@ -106,7 +126,8 @@ export default {
         contractInstance: null,
         affLinkAddress: "",
         affLink: this.getCurHost(),
-        noOfTokensPerAmount: 0
+        noOfTokensPerAmount: 0,
+        accountBalance: 0
     }},
 
     mounted(){
@@ -123,6 +144,10 @@ export default {
 
         this.calculateFinalTokens();
 
+        window.setInterval(()=>{
+            this.loadUserBalance();
+        },10_000)
+        
     },
 
     watch: {
@@ -138,11 +163,12 @@ export default {
 
         isConnected() {
             this.updateState();
+            this.loadUserBalance();
         },
 
         walletAccount() {
             this.affLinkAddress = this.walletAccount;
-             this.updateState();
+            this.updateState();
         }
     },
 
@@ -166,6 +192,7 @@ export default {
         },
 
         getCurHost(){
+
             let port = window.location.port;
             let url = `${window.location.hostname}`;
 
@@ -227,12 +254,34 @@ export default {
 
         },
 
+        async loadUserBalance() {
+           
+           try{
+                if(!this.isConnected){
+                    return false;
+                }
+
+                let result = await this.contractInstance.balanceOf(this.walletAccount);
+
+                if(result.eq(BigNumber.from(0))){
+                    this.accountBalance = 0;
+                    return false;
+                }
+
+                this.accountBalance = this.toHumanReadable(result).toString();
+           } catch(e){
+               console.log("loadUserBalance Error ==>",e, e.stack)
+           }
+        },
+
+
         handleWalletProviderEvents() {
 
             this._walletProvider.on("connect",({provider,chainId,account})=>{
                 
                 if(!this.isSupportedChain(chainId)){
-                    Swal.fire({
+                 
+                 Swal.fire({
                         icon: 'error',
                         title: 'Oops...',
                         text: 'Unsupported Chain, Kindly Switch to Binance Smart Chain',
@@ -291,6 +340,65 @@ export default {
             return (chainId == appConfig.supportedChainId);
         },
 
+        async withdrawBalance() {
+
+            try {
+                
+                if(this.contractInstance == null){
+                    this.connectToWallet();
+                    return;
+                }
+
+                //lets check if presale or event has completed 
+                let hasEventEnded = await this.contractInstance.hasEventEnded();
+
+                if(!hasEventEnded){
+                    Swal.fire({
+                        icon: 'info',
+                        title: 'Oops...',
+                        text: `You can only withdraw after the event has ended`,
+                    })
+
+                    return;
+                }   
+
+                Swal.fire({
+                    title: 'Processing..',
+                    text: 'Kindly wait whiles we process your withdrawal',
+                    timerProgressBar: true,
+                    didOpen: () => Swal.showLoading(),
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
+                })
+
+                let result = await this.contractInstance.withdrawTokens();
+
+                await result.wait();
+
+                await this.loadUserBalance();
+
+                Swal.close();
+
+                 Swal.fire({
+                    icon: 'success',
+                    title: 'Hurray !',
+                    text: `Tokens withdrawal successful`,
+                })
+
+            } catch(e){
+
+                 console.log("withdraw Balance ===>>>>", e, e.stack)
+                 Swal.close();
+                
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: `Withdrawal Failed to complete (${e.message})`,
+                })
+                    
+            }
+        },
+
         async processAirdrop(){
 
             if(this.contractInstance == null){
@@ -306,12 +414,18 @@ export default {
                 title: 'Processing Airdrop',
                 text: 'Confirm from your wallet',
                 timerProgressBar: true,
-                didOpen: () => Swal.showLoading()
+                didOpen: () => Swal.showLoading(),
+                allowOutsideClick: false,
+                allowEscapeKey: false
             })
 
             try{
 
                 let result = await this.contractInstance.airdrop( this.getVisitorsReferrer(), {value: airdropFeeWei})
+
+                await result.wait();
+
+                await this.loadUserBalance();
 
                 Swal.close();
 
@@ -349,23 +463,29 @@ export default {
 
             try {
 
-                console.log(this.buyAmountInBNB)
+                //console.log(this.buyAmountInBNB)
                 let amountToBuyInBNBWei = ethersUtils.parseEther(this.buyAmountInBNB.toString());
 
                 Swal.fire({
                     title: 'Processing Request',
                     text: 'Confirm from your wallet',
                     timerProgressBar: true,
-                    didOpen: () => Swal.showLoading()
+                    didOpen: () => Swal.showLoading(),
+                    allowOutsideClick: false,
+                    allowEscapeKey: false
                 })
 
-                console.log(this.getVisitorsReferrer())
+                //console.log(this.getVisitorsReferrer())
 
                  let result = await this.contractInstance.buyPreSale( this.getVisitorsReferrer(), { value: amountToBuyInBNBWei })
 
+                 await result.wait();
+
+                 window.setTimeout(()=> this.loadUserBalance(), 2_000);
+
                 Swal.close();
 
-                Swal.fire({ icon: 'success',title: 'Hurray !', text: `Token Buy Successful` })
+                Swal.fire({ icon: 'success',title: 'Hurray !', text: `Token Buy Successful, You can withdraw the tokens after the event completed` })
 
             } catch (e){
 

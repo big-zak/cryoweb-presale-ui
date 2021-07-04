@@ -121,6 +121,19 @@
       "anonymous": false,
       "inputs": [
         {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "_option",
+          "type": "bool"
+        }
+      ],
+      "name": "SetHasEventEnded",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
           "indexed": true,
           "internalType": "address",
           "name": "owner_",
@@ -146,6 +159,25 @@
     {
       "stateMutability": "payable",
       "type": "fallback"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_account",
+          "type": "address"
+        }
+      ],
+      "name": "balanceOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
     },
     {
       "inputs": [
@@ -188,6 +220,19 @@
     },
     {
       "inputs": [],
+      "name": "getHasEventEnded",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
       "name": "getStats",
       "outputs": [
         {
@@ -199,6 +244,19 @@
           "internalType": "uint256",
           "name": "",
           "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "hasEventEnded",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
         }
       ],
       "stateMutability": "view",
@@ -226,6 +284,19 @@
         }
       ],
       "name": "setAmountPerAirdrop",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "_option",
+          "type": "bool"
+        }
+      ],
+      "name": "setHasEventEnded",
       "outputs": [],
       "stateMutability": "nonpayable",
       "type": "function"
@@ -283,7 +354,14 @@
       "type": "function"
     },
     {
+      "inputs": [],
+      "name": "withdrawTokens",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
       "stateMutability": "payable",
       "type": "receive"
     }
-]
+  ]
