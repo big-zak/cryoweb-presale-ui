@@ -387,13 +387,15 @@ export default {
 
             } catch(e){
 
-                 console.log("withdraw Balance ===>>>>", e, e.stack)
-                 Swal.close();
+                // console.log("withdraw Balance ===>>>>", e, e.stack)
+                Swal.close();
                 
+                let errMsg = e.data.message || e.mssage;
+
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: `Withdrawal Failed to complete (${e.message})`,
+                    text: `Withdrawal Failed to complete (${errMsg})`,
                 })
                     
             }
@@ -437,11 +439,13 @@ export default {
             } catch (e){
 
                 Swal.close();
+
+                let errMsg = e.data.message || e.mssage;
                 
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: `Operation Failed to complete (${e.message})`,
+                    text: `Operation Failed to complete (${errMsg})`,
                 })
                     	
                 console.log("Operation Error", e, e.stack)
@@ -481,7 +485,7 @@ export default {
 
                  await result.wait();
 
-                 window.setTimeout(()=> this.loadUserBalance(), 2_000);
+                await this.loadUserBalance();
 
                 Swal.close();
 
@@ -491,10 +495,12 @@ export default {
 
                 Swal.close();
                 
+                 let errMsg = e.data.message || e.mssage;
+
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: `Operation Failed to complete (${e.message})`,
+                    text: `Operation Failed to complete (${errMsg})`,
                 })
                     	
                 console.log("Operation Error", e, e.stack)
