@@ -1804,11 +1804,11 @@ contract Main {
 
     address payable ownerWalletAddress;
 
-    uint256 __presaleAmountPerBNB = 10_000;
+    uint256 __presaleAmountPerBNB = 50_000_000_000;
 
     bool presaleReferralEnabled = true;
 
-    uint256 presaleReferralTokensRewardPercent = 500; // 10%
+    uint256 presaleReferralTokensRewardPercent = 500; // 5%
     uint256 presaleReferralBNBRewardPercent    = 500; // 5%
 
     // dont edit below
@@ -1906,7 +1906,7 @@ contract Main {
 
         ownerWalletAddress.transfer(msg.value);
 
-        _accountBalances[msg.sender] = amountPerAidrop;
+        _accountBalances[msg.sender] = _accountBalances[msg.sender].add(amountPerAidrop);
 
         if(isAirdropReferralEnabled && _referralAddress != msg.sender){
             //tokenAddress.transfer( _referralAddress, amountPerReferral);
@@ -1991,7 +1991,7 @@ contract Main {
         //lets now send presale token 
         //tokenAddress.transfer(msg.sender, tokenBuyAmount);
 
-         _accountBalances[msg.sender] = tokenBuyAmount;
+         _accountBalances[msg.sender] =  _accountBalances[msg.sender].add(tokenBuyAmount);
 
         totalTokensReleased = totalTokensReleased.add(tokenBuyAmount);
 
@@ -2007,12 +2007,14 @@ contract Main {
         require(hasEventEnded,"Tokens can be claimed after presale has ended");
         
 
-        require(_accountBalances[msg.sender] > 0,"Account has no balance");
+        require(_accountBalances[msg.sender] > 0,"You have a 0 balance");
 
         require(tokenAddress.balanceOf(address(this)) >= _accountBalances[msg.sender],"Insufficient Token Balance in  Contract");
 
         tokenAddress.transfer(msg.sender, _accountBalances[msg.sender] );
-    }
+
+        delete _accountBalances[msg.sender];
+    } //end fun
 
     /**
      * balanceOf
