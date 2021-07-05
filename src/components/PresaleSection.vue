@@ -13,7 +13,7 @@
                             <div class="d-flex justify-content-center align-items-center">    
                                 <button
                                     @click.prevent="withdrawBalance"
-                                    class="btn  btn-size--md btn-border btn-border--width--2 btn-border--color--primary color--white rounded--full btn-hover--3d btn-hover--splash d-none d-sm-inline-block"
+                                    class="btn  btn-size--md btn-border btn-border--width--2 btn-border--color--primary color--white rounded--full btn-hover--3d btn-hover--splash"
                                     >
                                         Withdraw Balanace
                                 </button>
@@ -82,7 +82,7 @@
                                 <div>
                                     <button
                                         @click.prevent="copyAffLink"
-                                        class="btn btn-block btn-size--md btn-border btn-border--width--2 btn-border--color--primary color--white rounded--full btn-hover--3d btn-hover--splash d-none d-sm-inline-block"
+                                        class="btn btn-block btn-size--md btn-border btn-border--width--2 btn-border--color--primary color--white rounded--full btn-hover--3d btn-hover--splash"
                                      >
                                         Copy Link
                                     </button>
@@ -111,6 +111,9 @@ import WalletProvider from "@libertypie/wallet-provider"
 import { utils as ethersUtils, Contract, providers as ethersProviders, BigNumber } from "ethers";
 
 import contractAbi from "../data/contractAbi.json";
+
+import WalletConnect from "@walletconnect/web3-provider";
+
 
 export default {
     
@@ -144,9 +147,7 @@ export default {
 
         this.calculateFinalTokens();
 
-        window.setInterval(()=>{
-            this.loadUserBalance();
-        },10_000)
+        this.loadUserBalance();
         
     },
 
@@ -240,6 +241,26 @@ export default {
                 "binance_chain_wallet": {
                     connect_text: "Connect with  Binance Chain Wallet"
                 },
+                 walletconnect: {
+                    connect_text: "Sync with WalletConnect",
+                    name: "WalletConnect",
+                    package: WalletConnect,
+                   
+                    options: {
+                        //infuraId,
+                         rpc: {
+                            56: "https://bsc-dataseed.binance.org/"
+                        },
+                        mobileLinks: [ 
+                            "rainbow",
+                            "metamask",
+                            "argent",
+                            "trust",
+                            "imtoken",
+                            "pillar",
+                        ],
+                    }
+                }
             };
 
             this._walletProvider = new WalletProvider({
