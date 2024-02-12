@@ -20,13 +20,10 @@
                 <nav>
                     <ul class="navbar-nav" id="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#presale">Presale</a>
+                            <a class="nav-link" href="#presale">Buy Tok Seed Sale</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#roadmap">Roadmap</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#team">Features</a>
+                            <a class="nav-link" href="#features">Features</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#team">Team</a>

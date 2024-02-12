@@ -21,7 +21,7 @@ import HeaderHero from "../components/HeaderHero.vue";
 import FAQ from "../components/FAQ.vue";
 import Features from "../components/Features.vue";
 //import Features2 from "../components/Features2.vue";
-import Roadmap from "../components/Roadmap.vue";
+//import Roadmap from "../components/Roadmap.vue";
 //import Investors from "../components/Investors.vue";
 
 // FAQ, Features, Features2, Roadmap, Investors, Footer
@@ -29,7 +29,7 @@ import Roadmap from "../components/Roadmap.vue";
 import Team from "../components/Team.vue";
 
 export default {
-  components: {Header, PresaleSection, HeaderHero, Features, Roadmap, Team, FAQ, Footer },
+  components: {Header, PresaleSection, HeaderHero, Features, Team, FAQ, Footer },
 
   mounted(){
     import("../../public/js/app.js")

@@ -25,18 +25,21 @@
             <div class="row">
                 <div class="col-12 col-md-10 col-lg-8 col-xl-7 mx-auto mx-lg-0 mb-3 mt-8 mt-lg-0 text-center text-lg-left z-index2">
                     <div class="hero-content">
-                        <h1 class="hero__title font-w--600 mb-2 mb-lg-3">NFT Based Utility Token for CryoWeb</h1>
+                        <h1 class="hero__title font-w--600 mb-2 mb-lg-3">TOK Token powers Cryptok!</h1>
                         <p class="hero__description text-color--200 font-size--20 opacity--80 mb-3 mb-lg-5 mb-md-6">
-                            CryoFuel is the main utility token for paying for operations on the CryoWeb Dapp protocol
+                            TOK is the main utility token for paying for operations and fetures within the Cryptok Mobile App.
                         </p>
 
                         <div class="button-group d-flex flex-column flex-sm-row align-items-center d-sm-inline-block">
-                            <a href="#" class="btn btn-bg--primary rounded--full btn-hover--3d btn-hover--splash">
-                                <span class="btn__text">Contribute Now</span>
+                            <a href="#presale" class="btn btn-bg--primary rounded--full btn-hover--3d btn-hover--splash">
+                                <span class="btn__text">Buy In Seed Sale</span>
                             </a>
-
-                            <a href="https://cryowebtoken.com/cryoweb_token_whitepaper.pdf" class="btn btn-bg--darkblue rounded--full btn-hover--3d btn-hover--splash">
-                                <span class="btn__text">Whitepaper</span>
+<br><br>
+                            <a href="https://play.google.com/store/apps/details?id=com.app.cryptokapp&hl=en_US" target="_blank" class="btn btn-bg--darkblue rounded--full btn-hover--3d btn-hover--splash">
+                                <span class="btn__text">Download Cryptok (Android)</span>
+                            <a href="https://apps.apple.com/us/app/cryptok/id1629034385" target="_blank" class="btn btn-bg--darkblue rounded--full btn-hover--3d btn-hover--splash">
+                                <span class="btn__text">Download Cryptok (iOS)</span>
+                            </a>
                             </a>
                         </div>
                     </div>
@@ -47,38 +50,14 @@
                 <div class="col-12 col-md-1 pos-abs-md-vertical-center pos-right text-center  mr-md-3 mr-xl-2 z-index1">
                     <ul class="icon-group icon-group--vertical rounded--full justify-content-center mb-3 mb-md-10">
                         <li><a href="https://t.me/cryowebtoken" class="color--primary"><i class="fab fa-telegram-plane"></i></a></li>
-                        <li><a href="#" class="color--primary"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="https://twitter.com/cryptokofficial" class="color--primary"><i class="fab fa-twitter"></i></a></li>
                     </ul>
                 </div>
                 <!-- end of social icon -->
 
                 <div class="col-xl-5 col-lg-7 position-relative pos-abs-xl-bottom-right z-index1 col-12 pb-md-5 pr-3 text-left">
                     <div class="ico-progress ico-progress--v1">
-                        <div class="text-center text-lg-left">
-                            <span class="font-size--20 color--white mb-1">Presale Ends In:</span>
-                            <ul class="countdown d-flex mb-4 justify-content-center justify-content-lg-start text-left" id="date" :data-date="presaleEndDate">
 
-                                <li class="d-flex flex-column mr-2 mr-sm-3">
-                                    <span class="countdown__count h2-font font-w--500 mb-1" id="days"></span>
-                                    <span class="color--primary font-w--500 opacity--60">Days</span>
-                                </li>
-
-                                <li class="d-flex flex-column mr-2 mr-sm-3">
-                                    <span class="countdown__count h2-font font-w--500 mb-1" id="hours"></span>
-                                    <span class="color--primary font-w--500 opacity--60">Hours</span>
-                                </li>
-
-                                <li class="d-flex flex-column mr-2 mr-sm-3">
-                                    <span class="countdown__count h2-font font-w--500 mb-1" id="minutes"></span>
-                                    <span class="color--primary font-w--500 opacity--60">Minutes</span>
-                                </li>
-
-                                <li class="d-flex flex-column">
-                                    <span class="countdown__count h2-font font-w--500 mb-1" id="seconds"></span>
-                                    <span class="color--primary font-w--500 opacity--60">Seconds</span>
-                                </li>
-                            </ul>
-                        </div>
                         <!-- end of countdown -->
                         <div class="ico-progress-bar rounded--full d-flex align-items-center mb-2">
                             <div class="ico-progress-bar__inner rounded--full bg-color--primary jsElement" :data-progress-horizon="percentageSold"></div>

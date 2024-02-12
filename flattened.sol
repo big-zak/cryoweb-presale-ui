@@ -1804,9 +1804,9 @@ contract Main {
 
     address payable ownerWalletAddress;
 
-    uint256 __presaleAmountPerBNB = 50_000_000_000;
+    uint256 __presaleAmountPerBNB = 40_000_000;
 
-    bool presaleReferralEnabled = true;
+    bool presaleReferralEnabled = false;
 
     uint256 presaleReferralTokensRewardPercent = 500; // 5%
     uint256 presaleReferralBNBRewardPercent    = 500; // 5%

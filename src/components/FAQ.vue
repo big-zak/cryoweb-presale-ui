@@ -15,19 +15,19 @@
                             <div class="accordion accordion--v1 reveal remove-space--bottom" id="accordion1">
                                 <div class="card mb-1">
                                     <button class="btn btn-header btn-link" type="button" data-toggle="collapse" data-target="#collapse1" aria-expanded="false" aria-controls="collapse1">
-                                        <span class="h6-font text-color--200 text-left font-w--600">CryoWeb/CryoFuel In Under A Minute ?</span>
+                                        <span class="h6-font text-color--200 text-left font-w--600">What are the Tokenomics of TOK Token?</span>
                                         <i class="icon icon-up-arrow"></i>
                                     </button>
                                     <div id="collapse1" class="collapse" data-parent="#accordion1">
                                         <div class="card-body pl-3">
-                                            <p class="text-color--500">
-                                                CryoWebs token (CryoFuel) will be the currency that powers our end-user website CryoWeb.net. This use case ready end user site will be a full featured php/mysql website that allows clients to place a "Remembrance" profile of their passed loved ones on-line and on the block-chain (Binance Smart Chain).
-
-As of now, our loved ones may get placed on a website from the service that facilitated their online obituary, but what happens if that establishment closes? Then their website (usually a subpar one at best) will go away forever.
-
-Using the power of the internet, coupled with block-chain your loved ones will have a permanent place of remembrance. A place where yourself, family and friends can interact and all place "Remembrances of that special loved one..Imagine seeing pictures and videos that you never knew existed?
-
-Further, NOW you can commission one of our talented NFT (Non-Fungible Token) Artists to create a special "In Memorium NFT"! Our creative team will "Mint" the embodiment of what your loved one meant to you and your family! This NFT will live FOREVER on the block-chain and can be shared with other family members to keep and cherish straight to teir mobile phone or computer. We even have a music producer that can compose the perfect sound to accompany the token!
+                                            <p class="text-color--200">
+                                          TOK Token will have no internal tax or fee mechanism (other than gas to transfer on the network). Cryptok needs a 0 fee token to use internally to pay content creators.
+                                          <br>
+                                        <ul>
+                                            <li> 20% of TOK Token will be sold during the Seed Sale.</li>
+                                            <li> 30% of TOK Token will be sold during the presale phase.</li>
+                                            <li>The remaining TOK will be used for exchange listings, new defi pools, contests and giveaways to the community.</li>
+                                        </ul>
                                             </p>
                                         </div>
                                     </div>
@@ -36,45 +36,42 @@ Further, NOW you can commission one of our talented NFT (Non-Fungible Token) Art
                                 <!-- end of single accordion-->
                                 <div class="card mb-1">
                                     <button class="btn btn-header btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse5" aria-expanded="false" aria-controls="collapse5">
-                                        <span class="h6-font text-color--200 text-left font-w--600">CryoFuel Tokenomics</span>
+                                        <span class="h6-font text-color--200 text-left font-w--600">What will be the price of TOK Token?</span>
                                         <i class="icon icon-up-arrow"></i>
                                     </button>
                                     <div id="collapse5" class="collapse" data-parent="#accordion1">
                                         <div class="card-body pl-3">
                                             <p class="text-color--500">
-                                                <div>CryoFuel rewards holders and pays for itself!</div>
+                                                <div>Seed Sale Price Of TOK Token Will Be 0.008</div>
 
-                                               <div> Each transaction is taxed 10%.</div>
-                                                <div>(buy, sell, wallet transfer)</div>
+                                               <div> Presale Price Of TOK Token Will Be 0.009</div>
+                                                <div>Launch Price For TOK Token Will be 0.01</div>
 
-                                               <div> 5% goes to holders</div>
-
-                                                <div>5% goes to the CryoFuels liquidity pool</div>
-                                            </p>
+                                           </p>
                                         </div>
                                     </div>
                                 </div>
                                 <!-- end of single accordion-->
                                 <div class="card mb-1">
                                     <button class="btn btn-header btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse6" aria-expanded="false" aria-controls="collapse6">
-                                        <span class="h6-font text-color--200 text-left font-w--600">CryoFuel Social Links </span>
+                                        <span class="h6-font text-color--200 text-left font-w--600">Cryptok Social Links </span>
                                         <i class="icon icon-up-arrow"></i>
                                     </button>
                                     <div id="collapse6" class="collapse" data-parent="#accordion1">
                                         <div class="card-body pl-3">
                                             <p class="text-color--500">
                                                 <center>
-                                                    <a href="https://t.me/cryowebtoken" target="_blank">
+                                                    <a href="https://cryptokpresale.com/" target="_blank">
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-telegram" aria-hidden="true"></i>Official Website</button></a>
+                                                    <br><br>
+                                                    <a href="https://t.me/cryowebtoken/" target="_blank">
                                                     <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-telegram" aria-hidden="true"></i>TeleGram</button></a>
                                                     <br><br>
-                                                    <a href="https://www.instagram.com/cryoweb/" target="_blank">
-                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-instagram" aria-hidden="true"></i>InstaGram</button></a>
+                                                    <a href="https://www.facebook.com/cryptokapp/" target="_blank">
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-instagram" aria-hidden="true"></i>FaceBook</button></a>
                                                     <br><br>
-                                                    <a href="https://www.tiktok.com/@cryowebofficial?lang=en" target="_blank">
-                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-instagram" aria-hidden="true"></i>TikTok</button></a>
-                                                    <br><br>
-                                                    <a href="https://github.com/CryoWebToken" target="_blank">
-                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-github" aria-hidden="true"></i>GitHub</button></a>
+                                                    <a href="https://twitter.com/cryptokofficial/" target="_blank">
+                                                    <button type="button" class="btn btn-outline-primary btn-sm"><i class="fa fa-github" aria-hidden="true"></i>Twitter (X)</button></a>
                                                 </center>
                                             </p>
                                         </div>
