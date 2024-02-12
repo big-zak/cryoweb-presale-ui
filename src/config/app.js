@@ -1,6 +1,6 @@
 export default {
     
-    appName: "wPokadot",
+    appName: "tokSeed",
     
     presaleEndDate: "Sep 30, 2021",
 
